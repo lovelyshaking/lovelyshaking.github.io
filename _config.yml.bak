@@ -9,7 +9,7 @@ name: ShadowHare's Blog
 description: the quieter you become,the more you are able to hear
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: /images/jekyll-logo.jpg
+avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
 
 #
 # Flags below are optional
