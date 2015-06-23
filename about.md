@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm a lover of Information Security! My blog is move here and wish to talk about security with you !If you have good idea , you can contact me and achieve it together !
+Hi, I'm a lover of Information Security! My blog is move here and wish to talk about security with you ! If you have good idea , you can contact me and achieve it together !
 
 ### More Information
 
