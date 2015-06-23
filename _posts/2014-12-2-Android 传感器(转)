@@ -46,6 +46,7 @@ The rotation vector sensor and thegravity sensor are the most frequently used se
 旋转矢量传感器和重力传感器是在运动检测和监测过程中最常用到的两种传感器。其中旋转矢量传感器的使用方法非常灵活，可广泛应用于与运动相关的检测当中，例如手势的检测，角度变化的检测，以及相对方位的检测等。打个比方，如果你正在开发一款游戏，包括增强现实的应用，一个2维或者3维德罗盘应用，或者相机防抖的应用等，此时旋转矢量传感器就是最好的选择了。大多数情况下，运用旋转矢量传感器和重力传感器要比使用加速度传感器、磁场感应传感器以及方位传感器更加合理。
 
 旋转矢量传感器所用的坐标系如下：
+
 ![_config.yml]({{ site.baseurl }}/images/2014-12-2.png)
 
 The three elements of the rotationvector are equal to the last three components of a unit quaternion (cos(θ/2),x*sin(θ/2), y*sin(θ/2), z*sin(θ/2)). Elements of the rotation vector areunitless. The x, y, and z axes are defined in the same way as the accelerationsensor. The reference coordinate system is defined as a direct orthonormalbasis (see figure 1). This coordinate system has the following characteristics:
