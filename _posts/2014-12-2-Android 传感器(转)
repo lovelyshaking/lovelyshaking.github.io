@@ -1,0 +1,60 @@
+---
+layout: post
+title: Android 传感器
+---
+The Android platform providesseveral sensors that let you monitor the motion of a device. Two of thesesensors are always hardware-based (the accelerometer and gyroscope), and threeof these sensors can be either hardware-based or software-based (the gravity,linear acceleration, and rotation vector sensors). For example, on some devicesthe software-based sensors derive their data from the accelerometer andmagnetometer, but on other devices they may also use the gyroscope to derivetheir data. Most Android-powered devices have an accelerometer, and many nowinclude a gyroscope. The availability of the software-based sensors is morevariable because they often rely on one or more hardware sensors to derivetheir data.
+
+Android平台提供了多种传感器让你可以监测设备的运动状态。其中有两种传感器是基于硬件平台的（加速度传感器和陀螺仪），另外三种传感器同时基于软硬件平台（重力传感器，线性加速度传感器以及旋转矢量传感器）。举例来说，在某些设备上，基于软件平台的传感器的数据来源也许是加速度传感器和磁场强度感应计，但是在另外一些设备中，他们的数据来源也可以是陀螺仪。大多数Android平台设备都内置加速传感器，而且如今也多带有一个陀螺仪。基于软件的传感器的使用方式可以调整，这是因为他们通常会从两个及两个以上的硬件传感器中获取数据来源。
+
+Motion sensors are useful formonitoring device movement, such as tilt, shake, rotation, or swing. Themovement is usually a reflection of direct user input (for example, a usersteering a car in a game or a user controlling a ball in a game), but it canalso be a reflection of the physical environment in which the device is sitting(for example, moving with you while you drive your car). In the first case, youare monitoring motion relative to the device's frame of reference or yourapplication's frame of reference; in the second case you are monitoring motionrelative to the world's frame of reference. Motion sensors by themselves arenot typically used to monitor device position, but they can be used with othersensors, such as the geomagnetic field sensor, to determine a device's positionrelative to the world's frame of reference (seePosition Sensors for more information).
+
+运动传感器可以用来监测设备的运动状态，比如倾斜、晃动、旋转或是摇动。这些运动状态通常直接反映了用户们的输入方式（比如，一名用户在游戏中操作一辆汽车，或是在游戏中控制一颗皮球），但是，它也可以反映某种设备所处的物理环境（比如说当你驾车时，设备显示为正在运动的状态）。通过前者，你可以监测到它相对于所参考的设备或者应用框架的相对位移，而通过后者，你可以监测到它相对与整个地表的相对位移。运动传感器原本并不是为了定位设备的位置而设计的，但是通过与其他传感器的协同工作，比如说磁场强度感应计，来定位设备在地表的位置（参考位置传感器一章来获取更多信息）也不是做不到。
+
+All of the motion sensors returnmulti-dimensional arrays of sensor values for eachSensorEvent. For example, duringa single sensor event the accelerometer returns acceleration force data for thethree coordinate axes, and the gyroscope returns rate of rotation data for thethree coordinate axes. These data values are returned in a float array (values) along with other SensorEvent parameters. Table 1summarizes the motion sensors that are available on the Android platform.
+
+所有的运动传感器都会为每个传感器事件SensorEvent返回以多维数组形式表示的传感器数据。例如，在某次独立的传感器事件中，加速度传感器会返回含有三个坐标系信息的加速度力场信息，而陀螺仪则会返回含有三个坐标系信息的旋转力场信息。这些参数会跟其它的传感器事件SensorEvent参数一道，以浮点数组的方式返回。表1总结了在android平台上若干可用的运动传感器数据。
+
+表1. Android平台上支持的运动传感器列表
+
+    TYPE_ACCELEROMETER：  
+    SensorEvent.values[0]   Acceleration force along the x axis (including gravity).沿着x轴方向的加速度力（包括重力）   m/s2
+    SensorEvent.values[1]   Acceleration force along the y axis (including gravity).沿着y轴方向的加速度力（包括重力）   m/s2
+    SensorEvent.values[2]   Acceleration force along the z axis (including gravity).沿着z轴方向的加速度力（包括重力）   m/s2
+
+    TYPE_GRAVITY：
+    SensorEvent.values[0]   Force of gravity along the x axis.沿x轴方向的重力。 m/s2
+    SensorEvent.values[1]   Force of gravity along the y axis. 沿y轴方向的重力  m/s2
+    SensorEvent.values[2]   Force of gravity along the z axis.沿z轴方向的重力   m/s2
+
+    TYPE_GYROSCOPE：
+    SensorEvent.values[0]   Rate of rotation around the x axis.沿x轴方向的角速度.   rad/s
+    SensorEvent.values[1]   Rate of rotation around the y axis.沿y轴方向的角速度    rad/s
+    SensorEvent.values[2]   Rate of rotation around the z axis.沿z轴方向的角速度    rad/s
+
+    TYPE_LINEAR_ACCELERATION
+    SensorEvent.values[0]   Acceleration force along the x axis (excluding gravity).沿x轴方向的加速度力（不包括重力）   m/s2
+    SensorEvent.values[1]   Acceleration force along the y axis (excluding gravity).沿y轴方向的加速度力（不包括重力）   m/s2
+    SensorEvent.values[2]   Acceleration force along the z axis (excluding gravity).沿z轴方向的加速度力（不包括重力）   m/s2
+
+    TYPE_ROTATION_VECTOR
+    SensorEvent.values[0]   Rotation vector component along the x axis (x * sin(θ/2)).沿x轴方向的旋转矢量正弦分量(x * sin(θ/2))
+    SensorEvent.values[1]   Rotation vector component along the y axis (y * sin(θ/2)).沿y轴方向的旋转矢量正弦分量(y * sin(θ/2))
+    SensorEvent.values[2]   Rotation vector component along the z axis (z * sin(θ/2)).沿z轴方向的旋转矢量正弦分量(z * sin(θ/2))
+    SensorEvent.values[3]   Scalar component of the rotation vector ((cos(θ/2)).旋转矢量余弦分量((cos(θ/2)).
+The rotation vector sensor and thegravity sensor are the most frequently used sensors for motion detection andmonitoring. The rotational vector sensor is particularly versatile and can beused for a wide range of motion-related tasks, such as detecting gestures,monitoring angular change, and monitoring relative orientation changes. Forexample, the rotational vector sensor is ideal if you are developing a game, anaugmented reality application, a 2-dimensional or 3-dimensional compass, or acamera stabilization app. In most cases, using these sensors is a better choicethan using the accelerometer and geomagnetic field sensor or the orientationsensor.
+
+旋转矢量传感器和重力传感器是在运动检测和监测过程中最常用到的两种传感器。其中旋转矢量传感器的使用方法非常灵活，可广泛应用于与运动相关的检测当中，例如手势的检测，角度变化的检测，以及相对方位的检测等。打个比方，如果你正在开发一款游戏，包括增强现实的应用，一个2维或者3维德罗盘应用，或者相机防抖的应用等，此时旋转矢量传感器就是最好的选择了。大多数情况下，运用旋转矢量传感器和重力传感器要比使用加速度传感器、磁场感应传感器以及方位传感器更加合理。
+
+旋转矢量传感器所用的坐标系如下：
+![_config.yml]({{ site.baseurl }}/images/2014-12-2.png)
+
+The three elements of the rotationvector are equal to the last three components of a unit quaternion (cos(θ/2),x*sin(θ/2), y*sin(θ/2), z*sin(θ/2)). Elements of the rotation vector areunitless. The x, y, and z axes are defined in the same way as the accelerationsensor. The reference coordinate system is defined as a direct orthonormalbasis (see figure 1). This coordinate system has the following characteristics:
+
+旋转矢量的三个输出结果实际上就是四元数的后三个表达式(cos(θ/2), x*sin(θ/2), y*sin(θ/2), z*sin(θ/2))。旋转矢量的输出值是无单位的。其中x/y/z三个轴向与加速度传感器的定义一致。所参考的坐标系被定义为一个标准正交基（如图1）。该坐标系具有以下特征：
+
+    X is defined as the vector product Y x Z. It is tangential to the ground at the device's current location and points approximately East.
+    X值被定义为Y与Z值的向量积。即设备当前所处位置的地面与东方向的正切值。
+    Y is tangential to the ground at the device's current location and points toward the geomagnetic North Pole.
+    Y值是设备当前所处位置与地磁北极的正切值。
+    Z points toward the sky and is perpendicular to the ground plane.
+    Z值朝向天空方向，与地面垂直相交。
