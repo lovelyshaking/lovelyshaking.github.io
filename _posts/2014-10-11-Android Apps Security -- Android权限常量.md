@@ -3,9 +3,9 @@ layout: post
 title: Android Apps Security -- Android权限常量
 ---
 
-ACCESS_CHECKIN_PROPERTIES   ----------   允许读写访问checkin数据库中的properties表，改值可以更新上传
+ACCESS\_CHECKIN\_PROPERTIES   ----------   允许读写访问checkin数据库中的properties表，改值可以更新上传
 
-ACCESS_COARSE_LOCATION	------------    允许程序访问Cell_ID或Wifi热点来获取粗略位置信息
+ACCESS\_COARSE\_LOCATION	------------    允许程序访问Cell_ID或Wifi热点来获取粗略位置信息
 
 ACCESS_FINE_LOCATION  ----------- 	允许程序访问精良位置（如GPS）
 
