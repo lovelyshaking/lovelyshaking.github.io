@@ -5,7 +5,7 @@ title: 2014 US blackhat: Smart Nest Thermostat: A Smart Spy in Your Home
 
 拖了好久才看完第一篇。
 
-                          Smart Nest Thermostat \: A Smart Spy in Your Home
+                          Smart Nest Thermostat : A Smart Spy in Your Home
 
                    Grant Hernandez1, OrlandoArias1, Daniel Buentello2, and Yier Jin1
 
