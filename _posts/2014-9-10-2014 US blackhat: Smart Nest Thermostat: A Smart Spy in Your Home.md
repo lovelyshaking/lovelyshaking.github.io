@@ -1,18 +1,19 @@
 ---
 layout: post
-title: 2014-US blackhat: Smart Nest Thermostat: A Smart Spy in Your Home
+title: 2014 US blackhat\: Smart Nest Thermostat \: A Smart Spy in Your Home
 ---
+
 拖了好久才看完第一篇。
 
-                    Smart Nest Thermostat: A Smart Spy in Your Home
+                          Smart Nest Thermostat \: A Smart Spy in Your Home
 
-             Grant Hernandez1, OrlandoArias1, Daniel Buentello2, and Yier Jin1
+                   Grant Hernandez1, OrlandoArias1, Daniel Buentello2, and Yier Jin1
 
-                1 Security in Silicon Laboratory, University of CentralFlorida
+                    1 Security in Silicon Laboratory, University of CentralFlorida
 
-                            2 Independent Researcher
+                                      2 Independent Researcher
 
-                             yier.jin@eecs.ucf.edu
+                                        yier.jin@eecs.ucf.edu
 
 + ***Abstract***
 
