@@ -1,0 +1,24 @@
+---
+layout: post
+title: Davik to ART（转） 
+---
+
+Android的运行时从Dalvik虚拟机替换成ART虚拟机，并不要求开发者要将重新将自己的应用直接编译成目标机器码。也就是说，开发者开发出的应用程序经过编译和打包之后，仍然是一个包含dex字节码的APK文件。
+
+ART可以在不重新编译APK的基础上，直接对其进行加载和运行，这是由于APK在安装时被执行了AOT。AOT（Ahead Of Time）是相对JIT（Just In Time）而言的。也就是在APK运行之前，就对其包含的Dex字节码进行翻译，得到对应的本地机器指令，于是就可以在运行时直接执行了。这种技术不但使得我们可以不对原有的APK作任何修改，还可以使得这些APK只需要在安装时翻译一次，就可以无数次以本地机器指令的形式运行。这种技术与我们用C/C++语言编写一个程序，然后用GCC编译得到一个可执行程序，最后这个可执行程序就可以无数次地加载到系统执行，是差不多的。
+
+ART的运行原理如下：
+
+1. 在Android系统启动过程中创建的Zygote进程利用ART运行时导出的Java虚拟机接口创建ART虚拟机。
+
+2. APK在安装的时候，打包在里面的classes.dex文件会被工具dex2oat翻译成本地机器指令，最终得到一个ELF格式的oat文件。
+
+3. APK运行时，上述生成的oat文件会被加载到内存中，并且ART虚拟机可以通过里面的oatdata和oatexec段找到任意一个类的方法对应的本地机器指令来执行。
+
+    对于第二步：ART运行中，APK在安装的时候，同样安装服务PackageManagerService会通过守护进程installd调用另外一个工具dex2oat对打包在APK里面包含有Dex字节码进翻译。这个翻译器实际上就是基于LLVM架构实现的一个编译器，它的前端是一个Dex语法分析器。翻译后得到的是一个ELF格式的oat文件，这个oat文件同样是以.odex后缀结束，并且也是保存在/data/dalvik-cache目录中。   
+
+    ELF是Linux系统使用的一种文件格式，我们平时接触的静态库、动态库和可执行文件都是以这种格式保存的，但是由dexoat工具生成的oat文件与上述三种文件都不一样，它有两个特殊的段oatdata和oatexec，分别用来储存原来打包在APK里面的dex文件和翻译这个dex文件里面的类方法得到本地机器指令，如图所示：
+
+    在oat文件的动态段（dymanic section）中，还导出了三个符号oatdata、oatexec和oatlastword，分别用来描述oatdata和oatexec段加段到内存后的起止地址。在oatdata段中，包含了两个重要的信息，一个信息是原来的classes.dex文件的完整内容，另一个信息引导ART找到classes.dex文件里面的类方法所对应的本地机器指令，这些本地机器指令就保存在oatexec段中。
+
+    举个例子说，我们在classes.dex文件中有一个类A，那么当我们知道类A的名字后，就可以通过保存在oatdata段的dex文件得到类A的所有信息，比如它的父类、成员变量和成员函数等。另一方面，类A在oatdata段中有一个对应的OatClass结构体。这个OatClass结构体描述了类A的每一个方法所对应的本地机器指令在oatexec段的位置。也就是说，当我们知道一个类及其某一个方法的名字（签名）之后，就可以通过oatdata段的dex文件内容和OatClass结构体找到其在oatexec段的本地机器指令，这样就可以执行这个类方法了。
