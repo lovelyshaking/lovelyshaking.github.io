@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 2014 US blackhat\: Smart Nest Thermostat \: A Smart Spy in Your Home
+title: 2014 US blackhat: Smart Nest Thermostat: A Smart Spy in Your Home
 ---
 
 拖了好久才看完第一篇。
