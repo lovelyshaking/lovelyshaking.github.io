@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 2014-US blackhat: Smart Nest Thermostat: A Smart Spy in Your Home
+title: 2014 Blackhat USA: Smart Nest Thermostat: A Smart Spy in Your Home
 ---
 
 拖了好久才看完第一篇。
 
-                                  Smart Nest Thermostat: ASmart Spy in Your Home
+                                  Smart Nest Thermostat: A Smart Spy in Your Home
 
                            Grant Hernandez1, OrlandoArias1, Daniel Buentello2, and Yier Jin1
 
@@ -49,7 +49,7 @@ Nest Thermostat 会搜集设备使用统计和环境数据来“学习”用户�
 
 ![_config.yml]({{ site.baseurl }}/images/2014-9-10-1.png)
 
-图1 设备架构概览
+              图1 设备架构概览
 
 2.3  启动引导过程
 
@@ -57,7 +57,7 @@ Nest Thermostat 会搜集设备使用统计和环境数据来“学习”用户�
 
 ![_config.yml]({{ site.baseurl }}/images/2014-9-10-2.png)
 
-图2 设备引导过程
+              图2 设备引导过程
 
 + ***TheAM3703 - A Closer Look***
 
@@ -69,13 +69,13 @@ ARM子片（The ARMsubchip）结合了一个ARM Cortex-A8核，使用Version 7 �
 
 ![_config.yml]({{ site.baseurl }}/images/2014-9-10-3.png)
 
-图3 设备映射图
+              图3 设备映射图
 
 3.1  设备初始化（Deviceinitialization）
 
 电源连接后，时钟和复位信号在AM3703引导之前合适的初始化。设备引导配置通过6个外部管脚sys_boot[5:0]进行输入。Power-onreset后，这些管脚的值被状态寄存器CONTROL.CONTROL STATUS锁住。
 
-在基本初始化任务执行完毕后，如果sys_boot引脚数据依照配置，那么芯片上的ROM会跳转到连接的执行内存（XIP）。引导模式会作为盲跳到外部可寻址内存，这一步只要可执行的时候就会执行（as soon as possible）。否则，ROM创建一个用来搜索引导镜像的引导设备表并把它存在可用的高速暂存存储器的第一个位置。引导表的建立取决于设备是否从power-on reset状态进行引导。如果设备从power-on reset状态引导，引导配置直接读取于sys_boot针脚并且锁入CONTROL.CONTROLSTATUS寄存器中。否则，ROM会在SRAM的暂存器中寻找一个可用的引导配置，如果找到了，就使用，否则，就会从永久（存储）设备中建立一个作为引脚的配置（otherwise it will build one from permanent devicesas configured in the sys_boot pins）。
+在基本初始化任务执行完毕后，如果sys\_boot引脚数据依照配置，那么芯片上的ROM会跳转到连接的执行内存（XIP）。引导模式会作为盲跳到外部可寻址内存，这一步只要可执行的时候就会执行（as soon as possible）。否则，ROM创建一个用来搜索引导镜像的引导设备表并把它存在可用的高速暂存存储器的第一个位置。引导表的建立取决于设备是否从power-on reset状态进行引导。如果设备从power-on reset状态引导，引导配置直接读取于sys\_boot针脚并且锁入CONTROL.CONTROLSTATUS寄存器中。否则，ROM会在SRAM的暂存器中寻找一个可用的引导配置，如果找到了，就使用，否则，就会从永久（存储）设备中建立一个作为引脚的配置（otherwise it will build one from permanent devicesas configured in the sys_boot pins）。
 
 在若干环境下进一步考察这个过程，有可能从像UART或USB这样的外围设备中进行引导。这个就是我们使用的在固件认证起作用之前将我们的代码插入到Nest中的方法。
 
@@ -101,7 +101,7 @@ ARM子片（The ARMsubchip）结合了一个ARM Cortex-A8核，使用Version 7 �
  
 ![_config.yml]({{ site.baseurl }}/images/2014-9-10-4.png)
 
-图4 NAND Layout
+              图4 NAND Layout
 
 补丁需要被添加到kerneltree 中以便查询OMAP串口驱动，允许我们连接设备中可用的kgdb接口并捕获确定行为。我们向NAND  boot1区域下的单元永久的写入了这个kernel。然后我们使用自定义的u-boot来选择加电的时候引导哪个kernel。
 
