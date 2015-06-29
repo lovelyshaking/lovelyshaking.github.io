@@ -1,2 +1,3 @@
-# Jekyll Now
-Blog
+# My blog 
+## from Jekyll Now
+
