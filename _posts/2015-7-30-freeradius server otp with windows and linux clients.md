@@ -3,41 +3,41 @@ layout: post
 title: freeradius server otp with windows and linux clients
 ---
 
-1.	ÏµÍ³°æ±¾ CentOS-6.4-i386 
+1.    ç³»ç»Ÿç‰ˆæœ¬ CentOS-6.4-i386 
 
-		freeradius°æ±¾£ºFreeRADIUS Version 2.1.7
+		freeradiusç‰ˆæœ¬ï¼šFreeRADIUS Version 2.1.7
 		
-		otpd°æ±¾£ºotpd version 3.2.4
+		otpdç‰ˆæœ¬ï¼šotpd version 3.2.4
 		
-		°²×°freeradius Ê±³öÏÖ£º
+		å®‰è£…freeradius æ—¶å‡ºç°ï¼š
 			
-			1£© checking for _talloc in -ltalloc in /opt/lib... no
+			1ï¼‰ checking for _talloc in -ltalloc in /opt/lib... no
 		
 					configure: WARNING: talloc library not found. Use --with-talloc-lib-dir=<path>.
 	
-					configure: error: FreeRADIUS requires libtalloc Ê±£º
+					configure: error: FreeRADIUS requires libtalloc æ—¶ï¼š
 	
-					Ê¹ÓÃ£º yum install libtalloc-devel -y
+					ä½¿ç”¨ï¼š yum install libtalloc-devel -y
 			
-			2£©³öÏÖÈ±ÉÙ XXX.so¿âÊ±£¬ Ê¹ÓÃ yum provide */XXX.so ¿´ÄÇ¸ö¿â¾Í×°ÄÇ¸ö
+			2ï¼‰å‡ºç°ç¼ºå°‘ XXX.soåº“æ—¶ï¼Œ ä½¿ç”¨ yum provide */XXX.so çœ‹é‚£ä¸ªåº“å°±è£…é‚£ä¸ª
 			
-			°²×°otpd serverÊ±£º
+			å®‰è£…otpd serveræ—¶ï¼š
 			
 			
 
-2.	Linux freeradius pam£º http://freeradius.org/pam_radius_auth/
+2.	Linux freeradius pamï¼š http://freeradius.org/pam_radius_auth/
 		
-		µ±±àÒëÊ±³öÏÖ pam_modules.h not found ´íÎóÊ±£º yum install gcc pam-devel °²×°pam¿ª·¢¹¤¾ß
+		å½“ç¼–è¯‘æ—¶å‡ºç° pam_modules.h not found é”™è¯¯æ—¶ï¼š yum install gcc pam-devel å®‰è£…pamå¼€å‘å·¥å…·
 		
-		make Éú³É pam_radius_auth.so 
+		make ç”Ÿæˆ pam_radius_auth.so 
 		
 		cp pam_radius_auth.so /lib/security/pam_radius_auth.so
 		
-		ĞŞ¸Ä /etc/pam.d ÎÄ¼ş¼ĞÏÂµÄÓ¦ÓÃ³ÌĞòpamÅäÖÃ
+		ä¿®æ”¹ /etc/pam.d æ–‡ä»¶å¤¹ä¸‹çš„åº”ç”¨ç¨‹åºpamé…ç½®
 		
-		Ê¹ÓÃttyµÇÂ¼Ê±ĞŞ¸ÄloginÎÄ¼ş
+		ä½¿ç”¨ttyç™»å½•æ—¶ä¿®æ”¹loginæ–‡ä»¶
 		
-		Ê¹ÓÃÍ¼ĞÎ½çÃæµÇÂ¼Ê±ĞŞ¸ÄgdmºÍgdm-passwdÎÄ¼ş
+		ä½¿ç”¨å›¾å½¢ç•Œé¢ç™»å½•æ—¶ä¿®æ”¹gdmå’Œgdm-passwdæ–‡ä»¶
  
-3. windows ÈÏÖ¤²å¼ş pgina
+3. windows è®¤è¯æ’ä»¶ pgina
 		
