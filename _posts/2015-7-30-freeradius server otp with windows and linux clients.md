@@ -23,6 +23,13 @@ title: freeradius server otp with windows and linux clients
 			
 			安装otpd server时：
 			
+			1)./configure 如果提示没有openssl 安装 apt-get install libssl-dev
+			
+   			centos 下 yum install openssl openssl-devel
+			2) getpeereid.c:65: error: storage size of ‘peercred’ isn’t known错误
+			
+   			configure 后加 CPPFLAGS="-I/home/XXX/app/BerkeleyDB/include -D\_GNU\_SOURCE"
+			
 			
 
 2.	Linux freeradius pam： http://freeradius.org/pam_radius_auth/
