@@ -29,7 +29,7 @@ title: freeradius server otp with windows and linux clients
    			
 			2) getpeereid.c:65: error: storage size of ‘peercred’ isn’t known错误
 			
-   			configure 后加 CPPFLAGS="-I/home/XXX/app/BerkeleyDB/include -D\_GNU\_SOURCE"
+   			configure 后加 CPPFLAGS="-I/home/XXX/app/BerkeleyDB/include -D_GNU_SOURCE"
 			
 			
 
