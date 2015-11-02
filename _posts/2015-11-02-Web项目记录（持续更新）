@@ -1,0 +1,8 @@
+---
+layout: post
+title: Web项目记录
+---
+---
+
+1. Form提交的时候Request.getParameter()中Parameter是取得Form元素中name的名字。   
+2. 在web项目中，当Class.forName("om.mysql.jdbc.Driver");时myeclipse是不会去查找字符串，不会去查找驱动的。所以只需要把mysql-connector-java-5.1.7-bin.jar拷贝到tomcat下lib目录就可以了。
