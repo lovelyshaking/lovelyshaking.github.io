@@ -21,7 +21,7 @@ title: freeradius server otp with windows and linux clients
 			
 			2）出现缺少 XXX.so库时， 使用 yum provide */XXX.so 看那个库就装那个
 			
-			安装otpd server时：
+		安装otpd server时：
 			
 			1)./configure 如果提示没有openssl 安装 apt-get install libssl-dev
 			
@@ -29,7 +29,7 @@ title: freeradius server otp with windows and linux clients
    			
 			2) getpeereid.c:65: error: storage size of ‘peercred’ isn’t known错误
 			
-   			configure 后加 CPPFLAGS="-I/home/XXX/app/BerkeleyDB/include -D_GNU_SOURCE"
+   			configure 后加 CPPFLAGS="-D_GNU_SOURCE"
 			
 			
 
