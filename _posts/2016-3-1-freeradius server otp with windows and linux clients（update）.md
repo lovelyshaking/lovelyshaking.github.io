@@ -57,7 +57,7 @@ title: freeradius server otp with windows and linux clients
 			
 			
 
-2.	Linux freeradius pam： http://freeradius.org/pam\_radius\_auth/
+2.	Linux freeradius pam： [http://freeradius.org/pam\_radius\_auth/](http://freeradius.org/pam_radius_auth/)
 		
 		当编译时出现 pam_modules.h not found 错误时： yum install gcc pam-devel 安装pam开发工具
 		
