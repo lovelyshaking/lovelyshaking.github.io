@@ -30,6 +30,30 @@ title: freeradius server otp with windows and linux clients
 			2) getpeereid.c:65: error: storage size of ‘peercred’ isn’t known错误
 			
    			configure 后加 CPPFLAGS="-D_GNU_SOURCE"
+   			
+   		安装otp perl脚本时：
+			
+			1)Can't locate CPAN.pm in @INC (@INC contains: /usr/local/lib/perl5 /usr/local/share/perl5 /usr/lib/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5 /usr/share/perl5 .)
+			
+   			Checking ‘perl-CPAN’ package run following in your shell 
+   			
+   			[root@host13 ~]# rpm -q perl-CPAN
+
+			If perl-CPAN package is installed, you will get the output like this
+
+			perl-CPAN-1.9402-116.fc13.i686
+
+			else, you will get output like this
+
+			package perl-CPAN is not installed
+
+			and that the case you need to install it. You can install it via using yum, yum install perl-CPAN or from rpm, from “rpm.pbone.net” you can obtain “perl-CPAN rpm’s”.
+   			
+			2) error “make test had returned bad status, won’t install without force”
+			
+   			First go into perl CPAN shell：perl -MCPAN -e shell
+   			
+			then you can do force install of module using the command : force install Authen::HOTP
 			
 			
 
