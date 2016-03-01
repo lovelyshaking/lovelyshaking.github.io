@@ -1,6 +1,6 @@
 ---
 layout: post
-title: freeradius server otp with windows and linux clients
+title: freeradius server otp with windows and linux clients（update at 2016.3.1）
 ---
 
 1.    系统版本 CentOS-6.4-i386 
